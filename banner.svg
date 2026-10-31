@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 260" width="800" height="260" role="img" aria-label="z1xz profile banner">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 260" width="100%" role="img" aria-label="z1xz profile banner">
   <defs>
     <style><![CDATA[
       .banner-card {
@@ -79,11 +79,22 @@
         96% { opacity: 0.6; transform: translateX(1px); }
         97% { opacity: 1;   transform: translateX(-1px); }
       }
+
+      .avatar-pulse {
+        transform-origin: 85px 185px;
+        animation: avatarPulse 5s ease-in-out infinite;
+      }
+      @keyframes avatarPulse {
+        0%, 100% { transform: scale(1); }
+        50%      { transform: scale(1.02); }
+      }
     ]]></style>
 
-    <clipPath id="avatar-clip">
-      <circle cx="85" cy="185" r="43"/>
-    </clipPath>
+    <radialGradient id="avatar-grad" cx="50%" cy="40%" r="55%">
+      <stop offset="0%"   stop-color="#333333" stop-opacity="1"/>
+      <stop offset="70%"  stop-color="#111111" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="1"/>
+    </radialGradient>
 
     <radialGradient id="core-glow" cx="50%" cy="50%" r="50%">
       <stop offset="0%"   stop-color="#000000" stop-opacity="1"/>
@@ -95,6 +106,10 @@
       <stop offset="0%"   stop-color="#F4F4F4" stop-opacity="1"/>
       <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
     </radialGradient>
+
+    <clipPath id="avatar-clip">
+      <circle cx="85" cy="185" r="43"/>
+    </clipPath>
   </defs>
 
   <!-- ============ MAIN BACKGROUND ============ -->
@@ -227,13 +242,15 @@
     <circle cx="640" cy="105" r="5" fill="#FFFFFF" opacity="0.9"/>
 
     <!-- Outer scatter particles (counter-rotating slow) -->
-    <g class="spin-ccw-slow" class="flicker-3">
-      <circle cx="760" cy="60"  r="1.2" fill="#000" opacity="0.6"/>
-      <circle cx="520" cy="150" r="1.2" fill="#000" opacity="0.6"/>
-      <circle cx="720" cy="30"  r="1"   fill="#000" opacity="0.5"/>
-      <circle cx="560" cy="180" r="1"   fill="#000" opacity="0.5"/>
-      <circle cx="780" cy="140" r="1"   fill="#000" opacity="0.4"/>
-      <circle cx="500" cy="70"  r="1"   fill="#000" opacity="0.4"/>
+    <g class="spin-ccw-slow">
+      <g class="flicker-3">
+        <circle cx="760" cy="60"  r="1.2" fill="#000" opacity="0.6"/>
+        <circle cx="520" cy="150" r="1.2" fill="#000" opacity="0.6"/>
+        <circle cx="720" cy="30"  r="1"   fill="#000" opacity="0.5"/>
+        <circle cx="560" cy="180" r="1"   fill="#000" opacity="0.5"/>
+        <circle cx="780" cy="140" r="1"   fill="#000" opacity="0.4"/>
+        <circle cx="500" cy="70"  r="1"   fill="#000" opacity="0.4"/>
+      </g>
     </g>
   </g>
 
@@ -245,18 +262,36 @@
     <text x="10" y="4" class="username-sub" font-weight="600" fill="#2BA35A">online</text>
   </g>
 
-  <!-- ===== AVATAR (overlapping banner edge) ===== -->
-  <!-- White ring border (background) -->
-  <circle cx="85" cy="185" r="48" fill="#FFFFFF"/>
-  <circle cx="85" cy="185" r="48" fill="none" stroke="#F7F7F8" stroke-width="1"/>
+  <!-- ===== AVATAR (overlapping banner edge) - NATIVE SVG ===== -->
+  <!-- White ring border background -->
+  <circle cx="85" cy="185" r="50" fill="#FFFFFF"/>
+  <circle cx="85" cy="185" r="50" fill="none" stroke="#E5E5E5" stroke-width="1.2"/>
 
-  <!-- Avatar image pulled from GitHub -->
-  <g clip-path="url(#avatar-clip)">
-    <image href="https://github.com/z1xz.png" x="42" y="142" width="86" height="86" preserveAspectRatio="xMidYMid slice"/>
+  <!-- Avatar circle cutout with dark gradient -->
+  <g clip-path="url(#avatar-clip)" class="avatar-pulse">
+    <circle cx="85" cy="185" r="43" fill="url(#avatar-grad)"/>
+    <!-- Decorative geometric pattern inside avatar -->
+    <g opacity="0.15">
+      <circle cx="85" cy="175" r="15" fill="none" stroke="#FFF" stroke-width="0.8"/>
+      <circle cx="85" cy="175" r="25" fill="none" stroke="#FFF" stroke-width="0.4"/>
+      <line x1="60" y1="190" x2="110" y2="190" stroke="#FFF" stroke-width="0.5"/>
+    </g>
+    <!-- Abstract face silhouette -->
+    <g opacity="0.6">
+      <ellipse cx="85" cy="178" rx="12" ry="14" fill="#444"/>
+      <ellipse cx="85" cy="178" rx="10" ry="12" fill="#222"/>
+      <!-- Eyes -->
+      <circle cx="80" cy="176" r="1.5" fill="#666"/>
+      <circle cx="90" cy="176" r="1.5" fill="#666"/>
+      <!-- Mouth -->
+      <path d="M78,184 Q85,188 92,184" fill="none" stroke="#666" stroke-width="1.2" stroke-linecap="round"/>
+    </g>
+    <!-- Glint highlight -->
+    <circle cx="75" cy="168" r="3" fill="#FFFFFF" opacity="0.25"/>
   </g>
 
-  <!-- Outer subtle ring -->
-  <circle cx="85" cy="185" r="48" fill="none" stroke="#E5E5E5" stroke-width="0.8"/>
+  <!-- Inner border ring on avatar -->
+  <circle cx="85" cy="185" r="43" fill="none" stroke="#111" stroke-width="1.5" opacity="0.4"/>
 
   <!-- Small decorative bottom-right mark -->
   <g transform="translate(720,225)" opacity="0.55">
