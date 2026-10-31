@@ -1,3 +1,7 @@
+<div align="center">
+  <img src="./banner.svg" width="100%" alt="z1xz banner" />
+</div>
+
 hey, i'm z1xz!
 
 •  I am a self-taught software builder & web developer based in Cambodia
