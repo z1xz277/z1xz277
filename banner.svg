@@ -1,353 +1,256 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 260" width="100%" role="img" aria-label="z1xz profile banner">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 260" width="100%" role="img" aria-label="z1xz discord style profile banner">
   <defs>
     <style><![CDATA[
-      .banner-card {
-        fill: #FFFFFF;
-        stroke: #E5E5E5;
-        stroke-width: 1.2;
-      }
-      .main-name {
-        font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+      .name {
+        font-family: 'Inter', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
         font-weight: 800;
         font-size: 46px;
-        letter-spacing: -1.5px;
-        fill: #000000;
+        letter-spacing: -1px;
+        fill: #FFFFFF;
       }
-      .bio-sub {
-        font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+      .bio {
+        font-family: 'Inter', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
         font-weight: 400;
         font-size: 15px;
-        fill: #333333;
-        letter-spacing: 0.3px;
+        letter-spacing: 0.4px;
+        fill: #FFFFFF;
+        opacity: 0.92;
       }
       .pill-text {
-        font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+        font-family: 'Inter', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
         font-weight: 600;
         font-size: 11px;
-        fill: #111111;
-        letter-spacing: 1.2px;
-      }
-      .username-sub {
-        font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
-        font-weight: 500;
-        font-size: 13px;
-        fill: #666666;
+        letter-spacing: 1.6px;
+        fill: #FFFFFF;
       }
 
-      /* ====== VORTEX ANIMATIONS ====== */
-      .spin-slow    { transform-origin: 640px 105px; animation: spin 18s linear infinite; }
-      .spin-med     { transform-origin: 640px 105px; animation: spin 10s linear infinite; }
-      .spin-fast    { transform-origin: 640px 105px; animation: spin 5s linear infinite; }
-      .spin-xslow   { transform-origin: 640px 105px; animation: spin 32s linear infinite; }
-      .spin-ccw-med { transform-origin: 640px 105px; animation: spin-ccw 14s linear infinite; }
-      .spin-ccw-slow{ transform-origin: 640px 105px; animation: spin-ccw 24s linear infinite; }
-      .spin-ccw-fast{ transform-origin: 640px 105px; animation: spin-ccw 7s linear infinite; }
-
-      @keyframes spin     { from { transform: rotate(0deg);   } to { transform: rotate(360deg);  } }
-      @keyframes spin-ccw { from { transform: rotate(360deg); } to { transform: rotate(0deg);    } }
-
-      .pulse-core {
-        transform-origin: 640px 105px;
-        animation: pulse 3.4s ease-in-out infinite;
+      /* ===== TWINKLING STARS ===== */
+      @keyframes twinkle {
+        0%, 100% { opacity: 0.15; }
+        50%      { opacity: 1; }
       }
-      @keyframes pulse {
-        0%, 100% { transform: scale(1);    opacity: 0.85; }
-        50%      { transform: scale(1.18); opacity: 1;    }
-      }
+      .tw1 { animation: twinkle 3.1s ease-in-out infinite; }
+      .tw2 { animation: twinkle 4.3s ease-in-out infinite 1.1s; }
+      .tw3 { animation: twinkle 2.4s ease-in-out infinite 0.6s; }
+      .tw4 { animation: twinkle 5.2s ease-in-out infinite 2.0s; }
+      .tw5 { animation: twinkle 3.7s ease-in-out infinite 1.6s; }
 
-      .flicker-1 { animation: flicker 2.6s ease-in-out infinite; }
-      .flicker-2 { animation: flicker 3.8s ease-in-out infinite; }
-      .flicker-3 { animation: flicker 1.9s ease-in-out infinite; }
-      @keyframes flicker {
-        0%, 100% { opacity: 0.35; }
-        50%      { opacity: 1;    }
+      /* ===== MOON AMBIENT GLOW ===== */
+      .moon-glow {
+        transform-origin: 690px 68px;
+        animation: moonpulse 4.5s ease-in-out infinite;
       }
-
-      .wave-text {
-        animation: wave 4s ease-in-out infinite;
+      @keyframes moonpulse {
+        0%, 100% { opacity: 0.28; transform: scale(1); }
+        50%      { opacity: 0.62; transform: scale(1.08); }
       }
-      @keyframes wave {
-        0%, 100% { opacity: 0.75; transform: translateY(0); }
-        50%      { opacity: 1;    transform: translateY(-1px); }
+      .moon-body {
+        animation: moonbright 4.5s ease-in-out infinite;
+      }
+      @keyframes moonbright {
+        0%, 100% { opacity: 0.92; }
+        50%      { opacity: 1; }
       }
 
-      .glitch {
-        animation: glitch 6s steps(1) infinite;
+      /* ===== SHOOTING STARS ===== */
+      @keyframes shoot1 {
+        0%   { transform: translate(0, 0);        opacity: 0; }
+        3%   { opacity: 1; }
+        11%  { transform: translate(-330px, 165px); opacity: 0; }
+        100% { transform: translate(-330px, 165px); opacity: 0; }
       }
-      @keyframes glitch {
-        0%, 95%, 100% { opacity: 1; }
-        96% { opacity: 0.6; transform: translateX(1px); }
-        97% { opacity: 1;   transform: translateX(-1px); }
+      @keyframes shoot2 {
+        0%   { transform: translate(0, 0);        opacity: 0; }
+        3%   { opacity: 1; }
+        10%  { transform: translate(-400px, 140px); opacity: 0; }
+        100% { transform: translate(-400px, 140px); opacity: 0; }
       }
+      .shoot1 { animation: shoot1 11s linear infinite 2s; }
+      .shoot2 { animation: shoot2 14s linear infinite 7.5s; }
 
-      .avatar-bob {
-        transform-origin: 85px 185px;
-        animation: avatarBob 4s ease-in-out infinite;
-      }
-      @keyframes avatarBob {
-        0%, 100% { transform: translateY(0); }
-        50%      { transform: translateY(-1.5px); }
-      }
+      /* ===== AVATAR PLACEHOLDER TWINKLE ===== */
+      .av-tw { animation: twinkle 3.4s ease-in-out infinite 0.8s; }
     ]]></style>
 
-    <radialGradient id="core-glow" cx="50%" cy="50%" r="50%">
-      <stop offset="0%"   stop-color="#000000" stop-opacity="1"/>
-      <stop offset="60%"  stop-color="#111111" stop-opacity="0.6"/>
-      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
-    </radialGradient>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#0B0C10"/>
+      <stop offset="60%"  stop-color="#12161F"/>
+      <stop offset="100%" stop-color="#1F2833"/>
+    </linearGradient>
 
-    <radialGradient id="bg-glow" cx="80%" cy="50%" r="60%">
-      <stop offset="0%"   stop-color="#F4F4F4" stop-opacity="1"/>
+    <radialGradient id="moonglow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%"   stop-color="#FFFFFF" stop-opacity="0.55"/>
+      <stop offset="45%"  stop-color="#FFFFFF" stop-opacity="0.18"/>
       <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
     </radialGradient>
 
-    <radialGradient id="avatar-vignette" cx="50%" cy="42%" r="65%">
-      <stop offset="0%"   stop-color="#000000" stop-opacity="0"/>
-      <stop offset="75%"  stop-color="#000000" stop-opacity="0"/>
-      <stop offset="100%" stop-color="#000000" stop-opacity="0.55"/>
-    </radialGradient>
+    <clipPath id="banner-clip">
+      <rect x="4" y="4" width="792" height="196" rx="10" ry="10"/>
+    </clipPath>
 
     <clipPath id="avatar-clip">
-      <circle cx="85" cy="185" r="43"/>
+      <circle cx="85" cy="185" r="45"/>
     </clipPath>
   </defs>
 
-  <!-- ============ MAIN BACKGROUND ============ -->
-  <rect x="0" y="0" width="800" height="260" fill="#F7F7F8"/>
+  <!-- ============ CANVAS / PROFILE BODY ============ -->
+  <rect x="0" y="0" width="800" height="260" fill="#0B0C10"/>
 
   <!-- ============ BANNER CARD (top 200px) ============ -->
-  <rect class="banner-card" x="4" y="4" width="792" height="196" rx="10" ry="10"/>
-  <rect x="4" y="4" width="792" height="196" rx="10" ry="10" fill="url(#bg-glow)" opacity="0.55"/>
+  <g clip-path="url(#banner-clip)">
+    <!-- night sky -->
+    <rect x="4" y="4" width="792" height="196" fill="url(#sky)"/>
 
-  <!-- ===== Subtle grid accent on left ===== -->
-  <g opacity="0.07" stroke="#000" stroke-width="0.6">
-    <line x1="40"  y1="20"  x2="40"  y2="180"/>
-    <line x1="80"  y1="20"  x2="80"  y2="180"/>
-    <line x1="120" y1="20"  x2="120" y2="180"/>
-    <line x1="20"  y1="60"  x2="220" y2="60"/>
-    <line x1="20"  y1="100" x2="220" y2="100"/>
-    <line x1="20"  y1="140" x2="220" y2="140"/>
-  </g>
-
-  <!-- ===== Decorative dots ===== -->
-  <g fill="#000000">
-    <circle cx="30"  cy="25"  r="1.8" opacity="0.8"/>
-    <circle cx="38"  cy="25"  r="1.8" opacity="0.5"/>
-    <circle cx="46"  cy="25"  r="1.8" opacity="0.3"/>
-  </g>
-
-  <!-- ===== TYPOGRAPHY BLOCK ===== -->
-  <g transform="translate(180,72)">
-    <text x="0" y="0" class="username-sub">// github.com/z1xz</text>
-
-    <text x="-2" y="52" class="main-name glitch">z1xz</text>
-    <line x1="0" y1="62" x2="130" y2="62" stroke="#000" stroke-width="2" opacity="0.9"/>
-
-    <g class="wave-text">
-      <text x="0" y="92" class="bio-sub">claude tung sahur :&gt;</text>
+    <!-- ===== PIXEL STARS ===== -->
+    <g fill="#FFFFFF" shape-rendering="crispEdges">
+      <rect class="tw1" x="20"  y="30"  width="2" height="2"/>
+      <rect class="tw3" x="45"  y="18"  width="2" height="2"/>
+      <rect class="tw2" x="70"  y="52"  width="3" height="3"/>
+      <rect class="tw4" x="95"  y="26"  width="2" height="2"/>
+      <rect class="tw1" x="120" y="64"  width="2" height="2"/>
+      <rect class="tw5" x="150" y="20"  width="2" height="2"/>
+      <rect class="tw2" x="175" y="44"  width="2" height="2"/>
+      <rect class="tw3" x="205" y="30"  width="3" height="3"/>
+      <rect class="tw4" x="235" y="58"  width="2" height="2"/>
+      <rect class="tw1" x="265" y="22"  width="2" height="2"/>
+      <rect class="tw5" x="295" y="48"  width="2" height="2"/>
+      <rect class="tw2" x="325" y="34"  width="2" height="2"/>
+      <rect class="tw3" x="355" y="64"  width="3" height="3"/>
+      <rect class="tw1" x="385" y="26"  width="2" height="2"/>
+      <rect class="tw4" x="415" y="50"  width="2" height="2"/>
+      <rect class="tw2" x="445" y="38"  width="2" height="2"/>
+      <rect class="tw5" x="475" y="66"  width="2" height="2"/>
+      <rect class="tw3" x="505" y="24"  width="3" height="3"/>
+      <rect class="tw1" x="535" y="54"  width="2" height="2"/>
+      <rect class="tw4" x="565" y="32"  width="2" height="2"/>
+      <rect class="tw2" x="595" y="60"  width="2" height="2"/>
+      <rect class="tw5" x="625" y="26"  width="2" height="2"/>
+      <rect class="tw3" x="655" y="44"  width="2" height="2"/>
+      <rect class="tw1" x="730" y="40"  width="2" height="2"/>
+      <rect class="tw4" x="760" y="64"  width="3" height="3"/>
+      <rect class="tw2" x="780" y="28"  width="2" height="2"/>
+      <rect class="tw5" x="30"  y="90"  width="2" height="2"/>
+      <rect class="tw2" x="60"  y="110" width="2" height="2"/>
+      <rect class="tw4" x="90"  y="86"  width="2" height="2"/>
+      <rect class="tw1" x="130" y="102" width="2" height="2"/>
+      <rect class="tw3" x="210" y="92"  width="2" height="2"/>
+      <rect class="tw5" x="250" y="112" width="2" height="2"/>
+      <rect class="tw2" x="290" y="96"  width="2" height="2"/>
+      <rect class="tw4" x="330" y="118" width="2" height="2"/>
+      <rect class="tw1" x="370" y="90"  width="2" height="2"/>
+      <rect class="tw3" x="410" y="108" width="3" height="3"/>
+      <rect class="tw5" x="450" y="94"  width="2" height="2"/>
+      <rect class="tw2" x="490" y="116" width="2" height="2"/>
+      <rect class="tw4" x="530" y="98"  width="2" height="2"/>
+      <rect class="tw1" x="570" y="120" width="2" height="2"/>
+      <rect class="tw3" x="610" y="96"  width="2" height="2"/>
+      <rect class="tw5" x="650" y="112" width="2" height="2"/>
+      <rect class="tw2" x="740" y="96"  width="2" height="2"/>
+      <rect class="tw4" x="770" y="120" width="2" height="2"/>
+      <rect class="tw1" x="755" y="150" width="2" height="2"/>
+      <!-- sparkle crosses -->
+      <g class="tw3">
+        <rect x="108" y="38" width="8" height="2"/>
+        <rect x="111" y="35" width="2" height="8"/>
+      </g>
+      <g class="tw5">
+        <rect x="468" y="20" width="8" height="2"/>
+        <rect x="471" y="17" width="2" height="8"/>
+      </g>
+      <g class="tw2">
+        <rect x="608" y="130" width="8" height="2"/>
+        <rect x="611" y="127" width="2" height="8"/>
+      </g>
     </g>
 
-    <g transform="translate(0,108)">
-      <rect x="-6" y="-12" width="88" height="22" rx="11" ry="11"
-            fill="none" stroke="#111111" stroke-width="1.2"/>
-      <text x="7" y="2" class="pill-text">WINDYFAX</text>
+    <!-- ===== SHOOTING STARS ===== -->
+    <g class="shoot1" shape-rendering="crispEdges">
+      <rect x="520" y="20" width="5" height="5" fill="#FFFFFF"/>
+      <rect x="525" y="15" width="4" height="4" fill="#FFFFFF" opacity="0.65"/>
+      <rect x="529" y="11" width="3" height="3" fill="#FFFFFF" opacity="0.4"/>
+      <rect x="532" y="8"  width="2" height="2" fill="#FFFFFF" opacity="0.22"/>
     </g>
+    <g class="shoot2" shape-rendering="crispEdges">
+      <rect x="760" y="55" width="4" height="4" fill="#FFFFFF"/>
+      <rect x="764" y="51" width="3" height="3" fill="#FFFFFF" opacity="0.6"/>
+      <rect x="767" y="48" width="2" height="2" fill="#FFFFFF" opacity="0.35"/>
+    </g>
+
+    <!-- ===== PIXEL MOON (right side) ===== -->
+    <circle class="moon-glow" cx="690" cy="68" r="52" fill="url(#moonglow)"/>
+    <g class="moon-body" shape-rendering="crispEdges" transform="translate(662,40) scale(5)">
+      <rect x="4"  y="0"  width="3"  height="1" fill="#FFFFFF"/>
+      <rect x="3"  y="1"  width="5"  height="1" fill="#FFFFFF"/>
+      <rect x="2"  y="2"  width="7"  height="1" fill="#FFFFFF"/>
+      <rect x="2"  y="3"  width="7"  height="1" fill="#FFFFFF"/>
+      <rect x="1"  y="4"  width="9"  height="1" fill="#FFFFFF"/>
+      <rect x="1"  y="5"  width="9"  height="1" fill="#FFFFFF"/>
+      <rect x="1"  y="6"  width="9"  height="1" fill="#FFFFFF"/>
+      <rect x="2"  y="7"  width="7"  height="1" fill="#FFFFFF"/>
+      <rect x="2"  y="8"  width="7"  height="1" fill="#FFFFFF"/>
+      <rect x="3"  y="9"  width="5"  height="1" fill="#FFFFFF"/>
+      <rect x="4"  y="10" width="3"  height="1" fill="#FFFFFF"/>
+      <!-- craters -->
+      <rect x="6" y="3" width="2" height="2" fill="#C9CFD6"/>
+      <rect x="3" y="6" width="2" height="2" fill="#C9CFD6"/>
+      <rect x="6" y="7" width="1" height="1" fill="#DDE2E8"/>
+      <rect x="4" y="4" width="1" height="1" fill="#DDE2E8"/>
+      <rect x="2" y="2" width="1" height="1" fill="#E8ECF0"/>
+    </g>
+
+    <!-- ===== PIXEL MOUNTAINS: BACK RANGE ===== -->
+    <g shape-rendering="crispEdges">
+      <path fill="#1F2833" d="M0,160 20,160 20,140 40,140 40,150 60,150 60,120 80,120 80,135 100,135 100,155 120,155 120,130 140,130 140,110 160,110 160,140 180,140 180,160 200,160 200,145 220,145 220,125 240,125 240,150 260,150 260,170 280,170 280,150 300,150 300,130 320,130 320,115 340,115 340,140 360,140 360,160 380,160 380,145 400,145 400,125 420,125 420,105 440,105 440,130 460,130 460,150 480,150 480,165 500,165 500,145 520,145 520,120 540,120 540,140 560,140 560,160 580,160 580,150 600,150 600,130 620,130 620,110 640,110 640,135 660,135 660,155 680,155 680,140 700,140 700,120 720,120 720,145 740,145 740,165 760,165 760,150 780,150 780,160 800,160 800,200 0,200 Z"/>
+      <!-- pixel snow caps -->
+      <g fill="#FFFFFF" opacity="0.85">
+        <rect x="62"  y="120" width="16" height="4"/>
+        <rect x="142" y="110" width="16" height="4"/>
+        <rect x="322" y="115" width="16" height="4"/>
+        <rect x="422" y="105" width="16" height="4"/>
+        <rect x="522" y="120" width="16" height="4"/>
+        <rect x="622" y="110" width="16" height="4"/>
+        <rect x="702" y="120" width="16" height="4"/>
+      </g>
+    </g>
+
+    <!-- ===== PIXEL MOUNTAINS: FRONT RANGE ===== -->
+    <path fill="#0B0C10" shape-rendering="crispEdges" d="M0,175 30,175 30,160 55,160 55,175 80,175 80,150 105,150 105,165 130,165 130,180 160,180 160,160 185,160 185,145 210,145 210,165 235,165 235,180 265,180 265,170 290,170 290,155 315,155 315,170 345,170 345,185 375,185 375,165 400,165 400,150 425,150 425,170 450,170 450,185 480,185 480,175 505,175 505,160 530,160 530,175 560,175 560,185 590,185 590,170 615,170 615,155 640,155 640,170 670,170 670,180 700,180 700,165 725,165 725,150 750,150 750,170 775,170 775,180 800,180 800,200 0,200 Z"/>
   </g>
 
-  <!-- ===== VECTOR VORTEX / TUNNEL ===== -->
+  <!-- banner card border -->
+  <rect x="4" y="4" width="792" height="196" rx="10" ry="10" fill="none" stroke="#1F2833" stroke-width="1.2"/>
+
+  <!-- ============ TYPOGRAPHY (clean, no clutter) ============ -->
+  <text x="172" y="106" class="name">z1xz</text>
+  <text x="174" y="134" class="bio">claude tung sahur :&gt;</text>
   <g>
-    <g class="spin-xslow">
-      <circle cx="640" cy="105" r="110" fill="none" stroke="#111" stroke-width="0.6" stroke-dasharray="2 8" opacity="0.5"/>
-      <circle cx="750" cy="105" r="2.2" fill="#000"/>
-      <circle cx="530" cy="105" r="2.2" fill="#000"/>
-      <circle cx="640" cy="-5"  r="2.2" fill="#000"/>
-      <circle cx="640" cy="215" r="2.2" fill="#000"/>
-    </g>
-
-    <g class="spin-ccw-slow">
-      <circle cx="640" cy="105" r="98" fill="none" stroke="#000" stroke-width="1" stroke-dasharray="1 14" opacity="0.7"/>
-      <polygon points="640,10 644,16 636,16" fill="#000"/>
-      <polygon points="640,200 644,194 636,194" fill="#000"/>
-      <polygon points="542,105 548,109 548,101" fill="#000"/>
-      <polygon points="738,105 732,109 732,101" fill="#000"/>
-    </g>
-
-    <g class="spin-ccw-fast">
-      <circle cx="640" cy="105" r="82" fill="none" stroke="#000" stroke-width="1.4" stroke-dasharray="6 4 1 4" opacity="0.85"/>
-      <rect x="637" y="21"  width="6" height="6" fill="#000"/>
-      <rect x="637" y="183" width="6" height="6" fill="#000"/>
-      <rect x="556" y="102" width="6" height="6" fill="#000"/>
-      <rect x="718" y="102" width="6" height="6" fill="#000"/>
-    </g>
-
-    <g class="spin-med" fill="none" stroke="#000" stroke-linecap="round">
-      <path d="M640,105 Q700,80 720,45"  stroke-width="2.2" opacity="0.95"/>
-      <path d="M640,105 Q700,130 720,165" stroke-width="2.2" opacity="0.95"/>
-      <path d="M640,105 Q580,130 560,165" stroke-width="2.2" opacity="0.95"/>
-      <path d="M640,105 Q580,80 560,45"  stroke-width="2.2" opacity="0.95"/>
-      <path d="M640,105 Q685,60 670,25"  stroke-width="1.4" opacity="0.7"/>
-      <path d="M640,105 Q685,150 670,185" stroke-width="1.4" opacity="0.7"/>
-      <path d="M640,105 Q595,150 610,185" stroke-width="1.4" opacity="0.7"/>
-      <path d="M640,105 Q595,60 610,25"  stroke-width="1.4" opacity="0.7"/>
-    </g>
-
-    <g class="spin-ccw-med">
-      <circle cx="640" cy="105" r="65" fill="none" stroke="#000" stroke-width="0.8" stroke-dasharray="3 3" opacity="0.75"/>
-      <circle cx="640" cy="105" r="55" fill="none" stroke="#000" stroke-width="0.5" stroke-dasharray="1 3" opacity="0.6"/>
-      <g class="flicker-1">
-        <circle cx="640" cy="40"  r="2.5" fill="#000"/>
-        <circle cx="640" cy="170" r="2.5" fill="#000"/>
-        <circle cx="575" cy="105" r="2.5" fill="#000"/>
-        <circle cx="705" cy="105" r="2.5" fill="#000"/>
-      </g>
-    </g>
-
-    <g class="spin-fast">
-      <circle cx="640" cy="105" r="45" fill="none" stroke="#000" stroke-width="1.8" stroke-dasharray="2 6" opacity="0.9"/>
-      <circle cx="640" cy="60"  r="1.8" fill="#000"/>
-      <circle cx="640" cy="150" r="1.8" fill="#000"/>
-      <circle cx="595" cy="105" r="1.8" fill="#000"/>
-      <circle cx="685" cy="105" r="1.8" fill="#000"/>
-    </g>
-
-    <g class="spin-slow">
-      <circle cx="640" cy="105" r="30" fill="none" stroke="#000" stroke-width="0.4" stroke-dasharray="1 4" opacity="0.5"/>
-      <g class="flicker-2">
-        <circle cx="640" cy="75"  r="1.4" fill="#000"/>
-        <circle cx="640" cy="135" r="1.4" fill="#000"/>
-        <circle cx="610" cy="105" r="1.4" fill="#000"/>
-        <circle cx="670" cy="105" r="1.4" fill="#000"/>
-        <circle cx="619" cy="84"  r="1" fill="#000"/>
-        <circle cx="661" cy="84"  r="1" fill="#000"/>
-        <circle cx="619" cy="126" r="1" fill="#000"/>
-        <circle cx="661" cy="126" r="1" fill="#000"/>
-      </g>
-    </g>
-
-    <circle class="pulse-core" cx="640" cy="105" r="22" fill="url(#core-glow)"/>
-    <circle class="pulse-core" cx="640" cy="105" r="14" fill="#000"/>
-    <circle cx="640" cy="105" r="5" fill="#FFFFFF" opacity="0.9"/>
-
-    <g class="spin-ccw-slow">
-      <g class="flicker-3">
-        <circle cx="760" cy="60"  r="1.2" fill="#000" opacity="0.6"/>
-        <circle cx="520" cy="150" r="1.2" fill="#000" opacity="0.6"/>
-        <circle cx="720" cy="30"  r="1"   fill="#000" opacity="0.5"/>
-        <circle cx="560" cy="180" r="1"   fill="#000" opacity="0.5"/>
-        <circle cx="780" cy="140" r="1"   fill="#000" opacity="0.4"/>
-        <circle cx="500" cy="70"  r="1"   fill="#000" opacity="0.4"/>
-      </g>
-    </g>
+    <rect x="172" y="148" width="88" height="22" rx="11" ry="11" fill="none" stroke="#FFFFFF" stroke-width="1.2" opacity="0.9"/>
+    <text x="187" y="163" class="pill-text">windyfax</text>
   </g>
 
-  <!-- ===== PROFILE INFO AREA (below banner) ===== -->
-  <g transform="translate(180,218)">
-    <circle cx="0" cy="0" r="4.5" fill="#3BA55C"/>
-    <text x="10" y="4" class="username-sub" font-weight="600" fill="#2BA35A">online</text>
-  </g>
-
-  <!-- ===== AVATAR CUTOUT (Discord style, native pixel-art pfp) ===== -->
-  <!-- White ring border -->
-  <circle cx="85" cy="185" r="50" fill="#FFFFFF"/>
-  <circle cx="85" cy="185" r="50" fill="none" stroke="#E5E5E5" stroke-width="1.2"/>
+  <!-- ============ AVATAR CUTOUT (Discord style) ============ -->
+  <!-- cutout ring background matching profile body -->
+  <circle cx="85" cy="185" r="50" fill="#0B0C10"/>
+  <circle cx="85" cy="185" r="50" fill="none" stroke="#1F2833" stroke-width="1"/>
+  <!-- dark placeholder background inside avatar -->
+  <circle cx="85" cy="185" r="45" fill="#1F2833"/>
 
   <g clip-path="url(#avatar-clip)">
-    <!-- pfp dark background -->
-    <rect x="42" y="142" width="86" height="86" fill="#1C1C1C"/>
-
-    <!-- pixel-art recreation of the Minecraft-style pfp (16x16 grid) -->
-    <g class="avatar-bob" shape-rendering="crispEdges" transform="translate(49,149) scale(4.5)">
-      <!-- head top -->
-      <rect x="4" y="2" width="2" height="1" fill="#DDB26A"/>
-      <rect x="6" y="2" width="5" height="1" fill="#D2A055"/>
-      <rect x="11" y="2" width="1" height="1" fill="#9C6B2A"/>
-      <rect x="4" y="3" width="1" height="1" fill="#DDB26A"/>
-      <rect x="5" y="3" width="6" height="1" fill="#D2A055"/>
-      <rect x="11" y="3" width="1" height="1" fill="#9C6B2A"/>
-      <!-- brows -->
-      <rect x="4" y="4" width="1" height="1" fill="#D2A055"/>
-      <rect x="5" y="4" width="2" height="1" fill="#3F2A12"/>
-      <rect x="7" y="4" width="2" height="1" fill="#D2A055"/>
-      <rect x="9" y="4" width="2" height="1" fill="#3F2A12"/>
-      <rect x="11" y="4" width="1" height="1" fill="#9C6B2A"/>
-      <!-- eyes row 1 -->
-      <rect x="4" y="5" width="1" height="1" fill="#D2A055"/>
-      <rect x="5" y="5" width="1" height="1" fill="#F5F5F5"/>
-      <rect x="6" y="5" width="1" height="1" fill="#141414"/>
-      <rect x="7" y="5" width="2" height="1" fill="#D2A055"/>
-      <rect x="9" y="5" width="1" height="1" fill="#141414"/>
-      <rect x="10" y="5" width="1" height="1" fill="#F5F5F5"/>
-      <rect x="11" y="5" width="1" height="1" fill="#9C6B2A"/>
-      <!-- eyes row 2 -->
-      <rect x="4" y="6" width="1" height="1" fill="#D2A055"/>
-      <rect x="5" y="6" width="1" height="1" fill="#F5F5F5"/>
-      <rect x="6" y="6" width="1" height="1" fill="#141414"/>
-      <rect x="7" y="6" width="2" height="1" fill="#D2A055"/>
-      <rect x="9" y="6" width="1" height="1" fill="#141414"/>
-      <rect x="10" y="6" width="1" height="1" fill="#F5F5F5"/>
-      <rect x="11" y="6" width="1" height="1" fill="#9C6B2A"/>
-      <!-- mouth -->
-      <rect x="4" y="7" width="1" height="1" fill="#D2A055"/>
-      <rect x="5" y="7" width="2" height="1" fill="#C08A3E"/>
-      <rect x="7" y="7" width="2" height="1" fill="#7A4E1E"/>
-      <rect x="9" y="7" width="2" height="1" fill="#C08A3E"/>
-      <rect x="11" y="7" width="1" height="1" fill="#9C6B2A"/>
-      <!-- chin -->
-      <rect x="4" y="8" width="7" height="1" fill="#C08A3E"/>
-      <rect x="11" y="8" width="1" height="1" fill="#9C6B2A"/>
-      <!-- neck -->
-      <rect x="6" y="9" width="4" height="1" fill="#9C6B2A"/>
-      <!-- torso + harness straps + white arms -->
-      <rect x="2" y="10" width="2" height="1" fill="#E8E8E8"/>
-      <rect x="4" y="10" width="1" height="1" fill="#C08A3E"/>
-      <rect x="5" y="10" width="1" height="1" fill="#332312"/>
-      <rect x="6" y="10" width="4" height="1" fill="#C08A3E"/>
-      <rect x="10" y="10" width="1" height="1" fill="#332312"/>
-      <rect x="11" y="10" width="1" height="1" fill="#C08A3E"/>
-      <rect x="12" y="10" width="2" height="1" fill="#E8E8E8"/>
-
-      <rect x="2" y="11" width="2" height="1" fill="#E8E8E8"/>
-      <rect x="4" y="11" width="2" height="1" fill="#C08A3E"/>
-      <rect x="6" y="11" width="1" height="1" fill="#332312"/>
-      <rect x="7" y="11" width="2" height="1" fill="#C08A3E"/>
-      <rect x="9" y="11" width="1" height="1" fill="#332312"/>
-      <rect x="10" y="11" width="2" height="1" fill="#C08A3E"/>
-      <rect x="12" y="11" width="2" height="1" fill="#E8E8E8"/>
-
-      <rect x="2" y="12" width="2" height="1" fill="#E8E8E8"/>
-      <rect x="4" y="12" width="3" height="1" fill="#C08A3E"/>
-      <rect x="7" y="12" width="2" height="1" fill="#332312"/>
-      <rect x="9" y="12" width="3" height="1" fill="#C08A3E"/>
-      <rect x="12" y="12" width="2" height="1" fill="#E8E8E8"/>
-
-      <rect x="2" y="13" width="2" height="1" fill="#E8E8E8"/>
-      <rect x="4" y="13" width="3" height="1" fill="#C08A3E"/>
-      <rect x="7" y="13" width="2" height="1" fill="#332312"/>
-      <rect x="9" y="13" width="3" height="1" fill="#C08A3E"/>
-      <rect x="12" y="13" width="2" height="1" fill="#E8E8E8"/>
-
-      <rect x="2" y="14" width="2" height="1" fill="#E8E8E8"/>
-      <rect x="4" y="14" width="8" height="1" fill="#C08A3E"/>
-      <rect x="12" y="14" width="2" height="1" fill="#E8E8E8"/>
-
-      <rect x="2" y="15" width="2" height="1" fill="#E8E8E8"/>
-      <rect x="4" y="15" width="8" height="1" fill="#C08A3E"/>
-      <rect x="12" y="15" width="2" height="1" fill="#E8E8E8"/>
+    <!-- subtle placeholder pixel stars (visible until base64 avatar is set) -->
+    <g fill="#FFFFFF" shape-rendering="crispEdges">
+      <rect class="av-tw" x="60"  y="163" width="2" height="2"/>
+      <rect class="av-tw" x="102" y="172" width="2" height="2"/>
+      <rect class="av-tw" x="78"  y="206" width="2" height="2"/>
+      <rect class="av-tw" x="66"  y="190" width="2" height="2"/>
+      <rect class="av-tw" x="98"  y="198" width="2" height="2"/>
     </g>
-
-    <!-- vignette for depth -->
-    <circle cx="85" cy="185" r="43" fill="url(#avatar-vignette)"/>
+    <!-- ===== AVATAR IMAGE (Base64 data URI — GitHub safe) =====
+         Replace the base64 string below with your own PNG data URI,
+         e.g. href="data:image/png;base64,YOUR_BASE64_HERE" -->
+    <image x="40" y="140" width="90" height="90" preserveAspectRatio="xMidYMid slice"
+           href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="/>
   </g>
 
-  <!-- inner ring on avatar -->
-  <circle cx="85" cy="185" r="43" fill="none" stroke="#111" stroke-width="1.5" opacity="0.4"/>
-
-  <!-- bottom-right decorative mark -->
-  <g transform="translate(720,225)" opacity="0.55">
-    <rect x="0"  y="0" width="8"  height="2" fill="#000"/>
-    <rect x="12" y="0" width="16" height="2" fill="#000"/>
-    <rect x="32" y="0" width="4"  height="2" fill="#000"/>
-    <rect x="0"  y="6" width="20" height="2" fill="#000"/>
-    <rect x="24" y="6" width="8"  height="2" fill="#000"/>
-  </g>
+  <!-- crisp white ring frame -->
+  <circle cx="85" cy="185" r="46.5" fill="none" stroke="#FFFFFF" stroke-width="3"/>
 </svg>
